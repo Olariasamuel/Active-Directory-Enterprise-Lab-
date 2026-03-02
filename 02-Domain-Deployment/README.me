@@ -1,0 +1,72 @@
+02 - Domain Deployment
+Overview
+This phase covers the installation of Active Directory Domain Services (AD DS) and the promotion of DC01 to a Domain Controller for the corp.local domain.
+
+Steps Performed
+1. Install AD DS Role
+
+Opened Server Manager and added the Active Directory Domain Services role via the Add Roles and Features Wizard
+Also installed DNS Server as part of the role installation (required for AD DS)
+
+How to install the role:
+Server Manager → Manage → Add Roles and Features →
+Role-based installation → Select "Active Directory Domain Services" → Install
+
+2. Post-Deployment Configuration
+
+After role installation, a notification appeared in Server Manager:
+"Configuration required for Active Directory Domain Services at DC01"
+Clicked "Promote this server to a domain controller" to launch the AD DS Configuration Wizard
+
+
+3. AD DS Configuration Wizard
+Deployment Configuration:
+
+Selected: Add a new forest
+Root domain name: corp.local
+
+Domain Controller Options:
+
+Forest functional level: Windows Server 2016
+Domain functional level: Windows Server 2016
+DNS Server: ✅ Enabled
+Global Catalog (GC): ✅ Enabled
+Set Directory Services Restore Mode (DSRM) password
+
+DNS Options:
+
+A delegation warning appeared — this is expected behavior in an isolated lab environment with no parent DNS zone. No action required.
+
+Additional Options:
+
+NetBIOS domain name: CORP (auto-populated)
+
+Paths (defaults accepted):
+ComponentDefault PathAD DS DatabaseC:\Windows\NTDSLog filesC:\Windows\NTDSSYSVOLC:\Windows\SYSVOL
+Installation:
+
+Reviewed configuration summary
+Clicked Install
+Server automatically restarted after promotion
+
+
+DNS Warning Explanation
+During installation, two warnings appeared:
+
+"A delegation for this DNS server cannot be created because the authoritative parent zone cannot be found."
+
+
+"Windows Server 2022 domain controllers have a default for the security setting named 'Allow cryptography algorithms compatible with Windows NT 4.0'..."
+
+Both are expected and safe to ignore in a standalone lab environment. They are not errors and do not affect functionality.
+
+Result
+At the end of this phase:
+
+✅ AD DS role installed on DC01
+✅ DC01 promoted to Domain Controller
+✅ New forest created: corp.local
+✅ DNS Server running and integrated with AD
+✅ Server restarted and logged in as CORP\Administrator
+
+
