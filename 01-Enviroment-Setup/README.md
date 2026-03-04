@@ -52,10 +52,7 @@ At the end of this phase, the server is:
 ✅ DNS pointing to itself (127.0.0.1)
 ✅ Ready for Active Directory Domain Services installation
 
-**Screenshots**
-Screenshots/01-shots/01-initial-server-manager.png
-Screenshots/01-shots/02-server-renamed-dc01.png
-Screenshots/01-shots/03-static-ip-config.png
+
 
 
 
